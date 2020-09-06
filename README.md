@@ -2,12 +2,12 @@
 
 ![banner](icon.svg)
 
-![minisauras](https://github.com/TeamTigers/minisauras/workflows/minisauras/badge.svg)
-![star](https://badgen.net/github/stars/TeamTigers/minisauras)
-![releases](https://badgen.net/github/release/teamtigers/minisauras)
-![GitHub](https://img.shields.io/github/license/teamtigers/minisauras)
-![GitHub repo size](https://img.shields.io/github/repo-size/teamtigers/minisauras?color=green)
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fteamtigers%2Fminisauras&count_bg=%23673AB7&title_bg=%23413B33&icon=buzzfeed.svg&icon_color=%23FFFFFF&title=vistited&edge_flat=false)](https://hits.seeyoufarm.com)
+![minisauras](https://img.shields.io/github/workflow/status/teamtigers/minisauras/minisauras?color=00c853&labelColor=212121&label=minisauras&logo=github&logoColor=ffffff)
+![star](https://img.shields.io/github/stars/teamtigers/minisauras?color=536dfe&logo=github&labelColor=212121&logoColor=ffffff)
+![releases](https://img.shields.io/github/v/release/teamtigers/minisauras?color=3d5afe&label=minisauras&labelColor=212121&logo=github%20actions&logoColor=ffffff)
+![GitHub](https://img.shields.io/github/license/teamtigers/minisauras?color=00c853&labelColor=212121&logo=sprint&logoColor=ffffff)
+[![Hackathon](https://img.shields.io/badge/%20-actions%20hackathon-black?color=14171A&labelColor=3f51b5&logo=dev.to&logoColor=ffffff)](https://dev.to/devteam/announcing-the-github-actions-hackathon-on-dev-3ljn)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fteamtigers%2Fminisauras&count_bg=%23212121&title_bg=%23512da8&icon=buzzfeed.svg&icon_color=%23FFFFFF&title=vistited&edge_flat=false)](https://hits.seeyoufarm.com)
 
 </div>
 
