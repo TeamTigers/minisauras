@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TeamTigers/mini-sauras.git"
+    "url": "git+https://github.com/TeamTigers/minisauras.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TeamTigers/mini-sauras/issues"
+    "url": "https://github.com/TeamTigers/minisauras/issues"
   },
-  "homepage": "https://github.com/TeamTigers/mini-sauras#readme",
+  "homepage": "https://github.com/TeamTigers/minisauras#readme",
   "dependencies": {
     "@actions/core": "^1.2.5",
     "@actions/github": "^4.0.0",

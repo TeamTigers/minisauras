@@ -1,4 +1,4 @@
-name: 'mini-sauras'
+name: 'minisauras'
 description: 'A GitHub action that pulls all your JavaScript & CSS files and minify before deployment.'
 branding:
     icon: minimize-2
