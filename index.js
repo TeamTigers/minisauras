@@ -23,6 +23,11 @@ const MyOctokit = Octokit.plugin(createPullRequest);
       `);
     }
 
+    if(github.context.ref.slice(11).startsWith('minisauras')){
+      console.log('Code has been minifed. It can be merged now.');
+      return;
+    }
+
     const pluginOctokit = new MyOctokit({
       auth: token,
     });
