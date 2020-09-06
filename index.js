@@ -71,10 +71,12 @@ const MyOctokit = Octokit.plugin(createPullRequest);
                 encodedStructure[eachData.path] = eachData["content"];
               });
 
+              // setting up pr description
               let prDescription = 'Changes in these files:\n';
               files.forEach(function (f) {
                     prDescription += `- **${f}** \n`;
               });
+              prDescription += '![cat](https://media1.tenor.com/images/841aeb9f113999616d097b414c539dfd/tenor.gif)';
 
               try {
                 pluginOctokit.createPullRequest({
