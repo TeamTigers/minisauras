@@ -1,2 +1,80 @@
-# mini-sauras
-A GitHub action that pulls all your static files and minify before deployment.
+<div align="center">
+
+![banner](icon.svg)
+
+![minisauras](https://github.com/TeamTigers/minisauras/workflows/minisauras/badge.svg)
+![star](https://badgen.net/github/stars/TeamTigers/minisauras)
+![releases](https://badgen.net/github/release/teamtigers/minisauras)
+![GitHub](https://img.shields.io/github/license/teamtigers/minisauras)
+![GitHub repo size](https://img.shields.io/github/repo-size/teamtigers/minisauras?color=green)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fteamtigers%2Fminisauras&count_bg=%23673AB7&title_bg=%23413B33&icon=buzzfeed.svg&icon_color=%23FFFFFF&title=vistited&edge_flat=false)](https://hits.seeyoufarm.com)
+
+</div>
+
+
+
+# Minisauras :tada:
+A GitHub action that pulls all your static JS files and minify them before deployment.
+
+Built a CI/CD automation tool based on GitHub actions that 
+- Traverse through a given directory (if not provided, traverse from root), finds all the JavaScript & CSS files within it and it's sub-directories. 
+- Afterwards, **Minisauras** minify all those files.
+- Finally, it creates a new branch in your repository and creates a pull request that can be merged in your base branch.
+
+## Usage
+- User needs to create a [personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+- Afterwards, the user needs to set [a secret](https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets) using that personal access token in the desired repository.
+- In the workflow file user needs to provide the desired directory in which he/she wants to minify CSS and JS files in the yaml file.
+
+## Examples
+
+_**If you want to minify all your JS and CSS files under root directory**_
+
+```yml
+name: minisauras
+
+on: [push]
+
+jobs:
+  read:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: minisauras
+      uses: TeamTigers/minisauras@v1.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      id: dir
+      with:
+        directory: './' ## minify all files from root directory
+```
+
+
+_**If you want to minify all your JS and CSS files under your custom directory ex. assets/js & assets/css**_
+
+```yml
+name: minisauras
+
+on: [push]
+
+jobs:
+  read:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: minisauras
+      uses: TeamTigers/minisauras@v1.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      id: dir
+      with:
+        directory: 'assets/' ## minify all files under assets directory
+```
+## License 
+This project is licensed under [MIT](LICENSE)
+
+## If you like our work please give it a :star:
