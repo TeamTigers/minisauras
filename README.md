@@ -14,7 +14,7 @@
 
 
 # Minisauras :tada:
-A GitHub action that pulls all your static JS files and minify them before deployment.
+A GitHub action that pulls all your JavaScript and CSS files and minify them before deployment.
 
 Built a CI/CD automation tool based on GitHub actions that 
 - Traverse through a given directory (if not provided, traverse from root), finds all the JavaScript & CSS files within it and it's sub-directories. 
