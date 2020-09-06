@@ -48,6 +48,9 @@ const MyOctokit = Octokit.plugin(createPullRequest);
       ignore: ["node_modules/**/*"],
     };
 
+    const newBranchName = 'minisauras_' + Math.random().toString(36).slice(2);
+
+
     glob(pattern, options, function (er, files) {
       if (er) throw new Error("File not found");
       let final = [];
@@ -69,27 +72,12 @@ const MyOctokit = Octokit.plugin(createPullRequest);
               });
 
               try {
-                const weekDay = [
-                  "Sat",
-                  "Sun",
-                  "Mon",
-                  "Tue",
-                  "Wed",
-                  "Thu",
-                  "Fri",
-                ];
-
                 pluginOctokit.createPullRequest({
                   owner: repoInfo.owner,
                   repo: repoInfo.repo,
                   title: "Custom title",
                   body: "Custom description",
-                  head: "minisauras_" +
-                    weekDay[new Date().getDay()] +
-                    "_" +
-                    new Date().getDate() +
-                    "_" +
-                    new Date().getTime(),
+                  head: newBranchName,
                   changes: [{
                     files: encodedStructure,
                     commit: "Updating something",
