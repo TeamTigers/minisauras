@@ -71,21 +71,23 @@ const MyOctokit = Octokit.plugin(createPullRequest);
                 encodedStructure[eachData.path] = eachData["content"];
               });
 
-              console.log(encodedStructure);
-
-              pluginOctokit.createPullRequest({
-                owner: repoInfo.owner,
-                repo: repoInfo.repo,
-                title: "Custom title",
-                body: "Custom description",
-                head: branch,
-                changes: [
-                  {
-                    files: encodedStructure,
-                    commit: "Updating something",
-                  },
-                ],
-              });
+              try {
+                pluginOctokit.createPullRequest({
+                  owner: repoInfo.owner,
+                  repo: repoInfo.repo,
+                  title: "Custom title",
+                  body: "Custom description",
+                  head: branch,
+                  changes: [
+                    {
+                      files: encodedStructure,
+                      commit: "Updating something",
+                    },
+                  ],
+                });
+              } catch (error) {
+                console.log('Warning from pluginOctokit');
+              }
             }
           });
       });
