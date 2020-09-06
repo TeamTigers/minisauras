@@ -14,17 +14,20 @@
 
 
 # Minisauras :tada:
-A GitHub action that pulls all your JavaScript and CSS files and minify them before deployment.
+Minisauras is an open-source CI/CD automation tool based on :octocat: [**GitHub Actions**](https://github.com/features/actions) that pulls all the JavaScript and CSS files from your base branch, minify them and creates a pull-request with a new branch. 
 
-Built a CI/CD automation tool based on GitHub actions that 
+## How it works
 - Traverse through a given directory (if not provided, traverse from root), finds all the JavaScript & CSS files within it and it's sub-directories. 
 - Afterwards, **Minisauras** minify all those files.
-- Finally, it creates a new branch in your repository and creates a pull request that can be merged in your base branch.
+- Finally, it creates a new branch in your repository, push those changes and creates a pull request that can be merged in your base branch.
 
 ## Usage
-- User needs to create a [personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
-- Afterwards, the user needs to set [a secret](https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets) using that personal access token in the desired repository.
-- In the workflow file user needs to provide the desired directory in which he/she wants to minify CSS and JS files in the yaml file.
+- Create a [personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+- Then [setup a secret](https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets) using that personal access token in your desired repository.
+- Create a workflow. For example: **main.yml** under (.github/workflows) directory.
+- In the workflow, provide following things:
+    * Personal access token. For example: ${{ secrets.TOKEN }} if you set your secret with a name 'TOKEN'.
+    * The desired directory in which you want to minify CSS and JS files. For example: './' for root and 'src/' for src directory.
 
 ## Examples
 
