@@ -15,7 +15,7 @@ const MyOctokit = Octokit.plugin(createPullRequest);
     let directory = core.getInput("directory");
     const token = process.env.GITHUB_TOKEN;
 
-    if (token === undefined) {
+    if (token === undefined || token.length === 0) {
       throw new Error(`
         Token not found. Please, set a secret token in your repository. 
         To know more about creating tokens, visit: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
@@ -63,7 +63,7 @@ const MyOctokit = Octokit.plugin(createPullRequest);
           .finally(function () {
             let encodedStructure = {};
 
-            if (final.length == files.length) {
+            if (final.length == files.length && !currentBranch.startsWith('minisauras')) {
               final.forEach(function (eachData) {
                 encodedStructure[eachData.path] = eachData["content"];
               });
