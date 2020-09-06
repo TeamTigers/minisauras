@@ -1,0 +1,19 @@
+name: mini-sauras
+
+on: [push]
+
+jobs:
+  read:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Reads Root Directory
+      uses: ./ # Uses an action in the root directory
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      id: dir
+      with:
+        directory: 'client/'
+        branch: 'testBranch'

@@ -1,0 +1,19 @@
+name: 'mini-sauras'
+description: 'A GitHub action that pulls all your static files and minify before deployment.'
+branding:
+    icon: minimize-2
+    color: blue
+inputs:
+    directory:
+        description: 'Root Directory'
+        required: true
+        default: './'
+    branch:
+        description: 'The branch to create'
+        default: 'minified'
+outputs:
+    files: 
+        description: 'All files under root directory'
+runs:
+    using: 'node12'
+    main: 'dist/index.js'
