@@ -66,30 +66,35 @@ const MyOctokit = Octokit.plugin(createPullRequest);
           .finally(function () {
             let encodedStructure = {};
 
-            if (final.length == files.length && !currentBranch.startsWith('minisauras')) {
+            if (final.length == files.length && !currentBranch.startsWith('minisauras') && files.length !== 0) {
               final.forEach(function (eachData) {
                 encodedStructure[eachData.path] = eachData["content"];
+              });
+
+              let prDescription = 'Changes in these files:\n';
+              files.forEach(function (f) {
+                    prDescription += `- ${f} \n`;
               });
 
               try {
                 pluginOctokit.createPullRequest({
                   owner: repoInfo.owner,
                   repo: repoInfo.repo,
-                  title: "Custom title",
-                  body: "Custom description",
+                  title: `Minified ${files.length} files`,
+                  body: prDescription,
                   head: newBranchName,
                   changes: [{
                     files: encodedStructure,
-                    commit: "Updating something",
+                    commit: `Minified ${files.length} files`,
                   }, ],
                 });
               } catch (error) {
-                console.log("Warning from pluginOctokit");
+                throw new Error(error);
               }
             }
           })
-          .catch(function (err) {
-            console.log("Warning from main");
+          .catch(function (error) {
+            throw new Error(error);
           });
       });
     });
