@@ -23,8 +23,9 @@ const MyOctokit = Octokit.plugin(createPullRequest);
       `);
     }
 
-    if(github.context.ref.slice(11).startsWith('minisauras')){
-      console.log('Code has been minifed. It can be merged now.');
+    const currentBranch = github.context.ref.slice(11);
+    if(currentBranch.startsWith('minisauras')){
+      console.log(`Code has been minifed. Branch ${currentBranch} can be merged now.`);
       return;
     }
 
