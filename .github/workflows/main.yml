@@ -16,4 +16,3 @@ jobs:
       id: dir
       with:
         directory: 'client/'
-        branch: 'testBranch'

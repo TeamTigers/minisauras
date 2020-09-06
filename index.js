@@ -14,27 +14,18 @@ const MyOctokit = Octokit.plugin(createPullRequest);
   try {
     let directory = core.getInput("directory");
     const token = process.env.GITHUB_TOKEN;
-    let branch = core.getInput("branch");
 
-    token === undefined
-      ? core.setFailed("Define token first")
-      : console.log(token.length);
-    branch === undefined
-      ? core.setFailed("Define branch first")
-      : console.log(branch);
-    branch = branch.replace("refs/heads/", "");
-
-    if (github.context.ref.slice(11) === branch) {
-      console.log(
-        `Branch ${branch} already exists. Please, delete this branch before using mini-sauras or, refer a new branch name in your workflows.`
-      );
-      return;
+    if (token === undefined) {
+      throw new Error(`
+        Token not found. Please, set a secret token in your repository. 
+        To know more about creating tokens, visit: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+        To know more about setting up personal access token, visit: https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
+      `);
     }
 
     const pluginOctokit = new MyOctokit({
       auth: token,
     });
-
     const context = github.context;
     const repoInfo = context.repo;
 
@@ -72,28 +63,44 @@ const MyOctokit = Octokit.plugin(createPullRequest);
               });
 
               try {
+                const weekDay = [
+                  "Sat",
+                  "Sun",
+                  "Mon",
+                  "Tue",
+                  "Wed",
+                  "Thu",
+                  "Fri",
+                ];
+
                 pluginOctokit.createPullRequest({
                   owner: repoInfo.owner,
                   repo: repoInfo.repo,
                   title: "Custom title",
                   body: "Custom description",
-                  head: branch,
-                  changes: [
-                    {
-                      files: encodedStructure,
-                      commit: "Updating something",
-                    },
-                  ],
+                  head: "minisauras_" +
+                    weekDay[new Date().getDay()] +
+                    "_" +
+                    new Date().getDate() +
+                    "_" +
+                    new Date().getTime(),
+                  changes: [{
+                    files: encodedStructure,
+                    commit: "Updating something",
+                  }, ],
                 });
               } catch (error) {
-                console.log('Warning from pluginOctokit');
+                console.log("Warning from pluginOctokit");
               }
             }
+          })
+          .catch(function (err) {
+            console.log("Warning from main");
           });
       });
     });
   } catch (error) {
-    core.setFailed(error.message);
+    // core.setFailed(error.message);
   }
 })();
 
