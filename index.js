@@ -24,7 +24,7 @@ const MyOctokit = Octokit.plugin(createPullRequest);
     }
 
     const currentBranch = github.context.ref.slice(11);
-    if(currentBranch.startsWith('minisauras')){
+    if(currentBranch.startsWith('_minisauras_')){
       console.log(`Code has been minifed. Branch ${currentBranch} can be merged now.`);
       return;
     }
@@ -48,7 +48,7 @@ const MyOctokit = Octokit.plugin(createPullRequest);
       ignore: ["node_modules/**/*"],
     };
 
-    const newBranchName = 'minisauras_' + Math.random().toString(36).slice(2);
+    const newBranchName = '_minisauras_' + Math.random().toString(36).slice(2);
 
 
     glob(pattern, options, function (er, files) {
@@ -66,14 +66,14 @@ const MyOctokit = Octokit.plugin(createPullRequest);
           .finally(function () {
             let encodedStructure = {};
 
-            if (final.length == files.length && !currentBranch.startsWith('minisauras') && files.length !== 0) {
+            if (final.length == files.length && !currentBranch.startsWith('_minisauras_') && files.length !== 0) {
               final.forEach(function (eachData) {
                 encodedStructure[eachData.path] = eachData["content"];
               });
 
               let prDescription = 'Changes in these files:\n';
               files.forEach(function (f) {
-                    prDescription += `- ${f} \n`;
+                    prDescription += `- **${f}** \n`;
               });
 
               try {
@@ -99,7 +99,7 @@ const MyOctokit = Octokit.plugin(createPullRequest);
       });
     });
   } catch (error) {
-    // core.setFailed(error.message);
+    throw new Error(error);
   }
 })();
 
