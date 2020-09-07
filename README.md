@@ -1,6 +1,6 @@
 <div align="center">
 
-![banner](icon.svg)
+![banner](assets/icons/icon.svg)
 
 ![minisauras](https://img.shields.io/github/workflow/status/teamtigers/minisauras/minisauras?color=00c853&labelColor=212121&label=minisauras&logo=github&logoColor=ffffff)
 ![star](https://img.shields.io/github/stars/teamtigers/minisauras?color=536dfe&logo=github&labelColor=212121&logoColor=ffffff)
@@ -77,6 +77,13 @@ jobs:
       with:
         directory: 'assets/' ## minify all files under assets directory
 ```
+
+## Example Repository
+
+There you go !! We have created an example repository where you can see how minisauras has minified all the CSS and JavaScript files as well as created a new branch and sent a [pull request](https://github.com/TeamTigers/minisauras-example/pull/1).
+
+[![cat](assets/images/cat-pr.gif)](https://github.com/TeamTigers/minisauras-example/)
+
 ## License 
 This project is licensed under [MIT](LICENSE)
 

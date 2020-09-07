@@ -10,6 +10,19 @@ const { Octokit } = require("@octokit/core");
 const { createPullRequest } = require("octokit-plugin-create-pull-request");
 const MyOctokit = Octokit.plugin(createPullRequest);
 
+/**
+ * Reads the personal access token and desired directory
+ * that needs to be minified from workflow.
+ * 
+ * Exits if token is undefined or, the current branch is a newly
+ * created branch by minisauras.
+ * 
+ * Uses 'glob' to find all possible CSS and JS 
+ * files within the desired directory and ignores node_modules.
+ * 
+ * Minify those files using 'csso' and 'terser' and
+ * finally push those changes within a new branch to create a PR.
+ */
 (async function init() {
   try {
     let directory = core.getInput("directory");
@@ -50,7 +63,7 @@ const MyOctokit = Octokit.plugin(createPullRequest);
 
     const newBranchName = '_minisauras_' + Math.random().toString(36).slice(2);
 
-
+    /** Using @glob to find all CSS and JS files */
     glob(pattern, options, function (er, files) {
       if (er) throw new Error("File not found");
       let final = [];
@@ -104,6 +117,13 @@ const MyOctokit = Octokit.plugin(createPullRequest);
     throw new Error(error);
   }
 })();
+
+/**
+ * Uses terser and csso to minify JavaScript and CSS files.
+ * @param {string} file containing file path to be minified.
+ * 
+ * @return {string} Minified content.
+ */
 
 const readAndMinify = async function (file) {
   const content = fs.readFileSync(file, "utf8");
