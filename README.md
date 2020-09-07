@@ -6,7 +6,7 @@
 ![star](https://img.shields.io/github/stars/teamtigers/minisauras?color=536dfe&logo=github&labelColor=212121&logoColor=ffffff)
 ![releases](https://img.shields.io/github/v/release/teamtigers/minisauras?color=3d5afe&label=minisauras&labelColor=212121&logo=github%20actions&logoColor=ffffff)
 ![GitHub](https://img.shields.io/github/license/teamtigers/minisauras?color=00c853&labelColor=212121&logo=sprint&logoColor=ffffff)
-[![Hackathon](https://img.shields.io/badge/%20-actions%20hackathon-black?color=14171A&labelColor=3f51b5&logo=dev.to&logoColor=ffffff)](https://dev.to/devteam/announcing-the-github-actions-hackathon-on-dev-3ljn)
+[![Hackathon](https://img.shields.io/badge/%20-actions%20hackathon-black?color=14171A&labelColor=3f51b5&logo=dev.to&logoColor=ffffff)](https://dev.to/_shunjid/minisauras-a-github-action-to-minify-css-and-js-files-34b9)
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fteamtigers%2Fminisauras&count_bg=%23212121&title_bg=%23512da8&icon=buzzfeed.svg&icon_color=%23FFFFFF&title=vistited&edge_flat=false)](https://hits.seeyoufarm.com)
 
 </div>
