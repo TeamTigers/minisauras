@@ -89,9 +89,10 @@ const MyOctokit = Octokit.plugin(createPullRequest);
               files.forEach(function (f) {
                     prDescription += `- **${f}** \n`;
               });
-              prDescription += '![cat](https://media1.tenor.com/images/841aeb9f113999616d097b414c539dfd/tenor.gif)';
+              const gif = 'https://media1.tenor.com/images/841aeb9f113999616d097b414c539dfd/tenor.gif';
+              prDescription += `![cat](${gif})`;
 
-              try {
+              if(prDescription.includes(gif)) {
                 pluginOctokit.createPullRequest({
                   owner: repoInfo.owner,
                   repo: repoInfo.repo,
@@ -102,9 +103,20 @@ const MyOctokit = Octokit.plugin(createPullRequest);
                     files: encodedStructure,
                     commit: `Minified ${files.length} files`,
                   }, ],
+                }).then(function (result) {
+                    if(result !== undefined) {
+                      const tableData = {
+                        'Pull request url': result.data.url,
+                        'Pull request title': result.data.title,
+                        'Sent by': result.data.user.login,
+                        'Total number of commits': result.data.commits,
+                        'Additions': result.data.additions,
+                        'Deletions': result.data.deletions,
+                        'Number of files changed': result.data.changed_files
+                      }
+                      console.table(tableData);
+                    }
                 });
-              } catch (error) {
-                throw new Error(error);
               }
             }
           })

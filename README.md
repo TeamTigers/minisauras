@@ -46,7 +46,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: minisauras
-      uses: TeamTigers/minisauras@v1.0.0
+      uses: TeamTigers/minisauras@v2.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
       id: dir
@@ -70,7 +70,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: minisauras
-      uses: TeamTigers/minisauras@v1.0.0
+      uses: TeamTigers/minisauras@v2.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
       id: dir
