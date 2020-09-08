@@ -82,7 +82,8 @@ jobs:
 
 There you go !! We have created an example repository where you can see how minisauras has minified all the CSS and JavaScript files as well as created a new branch and sent a [pull request](https://github.com/TeamTigers/minisauras-example/pull/1).
 
-**See the example repository at :** **https://github.com/TeamTigers/minisauras-example**
+📌 Visit the example repository at : https://github.com/TeamTigers/minisauras-example
+
 
 [![cat](assets/images/cat-pr.gif)](https://github.com/TeamTigers/minisauras-example/)
 
