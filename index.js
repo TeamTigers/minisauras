@@ -4,10 +4,16 @@ const path = require("path");
 const fs = require("fs");
 const glob = require("glob");
 const csso = require("csso");
-const { minify } = require("terser");
+const {
+  minify
+} = require("terser");
 
-const { Octokit } = require("@octokit/core");
-const { createPullRequest } = require("octokit-plugin-create-pull-request");
+const {
+  Octokit
+} = require("@octokit/core");
+const {
+  createPullRequest
+} = require("octokit-plugin-create-pull-request");
 const MyOctokit = Octokit.plugin(createPullRequest);
 
 /**
@@ -37,7 +43,7 @@ const MyOctokit = Octokit.plugin(createPullRequest);
     }
 
     const currentBranch = github.context.ref.slice(11);
-    if(currentBranch.startsWith('_minisauras_')){
+    if (currentBranch.startsWith('_minisauras_')) {
       console.log(`Code has been minifed. Branch ${currentBranch} can be merged now.`);
       return;
     }
@@ -88,11 +94,11 @@ const MyOctokit = Octokit.plugin(createPullRequest);
               const FUNNY_CAT = 'https://media1.tenor.com/images/841aeb9f113999616d097b414c539dfd/tenor.gif';
               let prDescription = 'Changes in these files:\n';
               files.forEach(function (f) {
-                    prDescription += `- **${f}** \n`;
+                prDescription += `- **${f}** \n`;
               });
               prDescription += `![cat](${FUNNY_CAT})`;
 
-              if(prDescription.includes(FUNNY_CAT)) {
+              if (prDescription.includes(FUNNY_CAT)) {
                 await pluginOctokit.createPullRequest({
                   owner: repoInfo.owner,
                   repo: repoInfo.repo,
@@ -104,18 +110,18 @@ const MyOctokit = Octokit.plugin(createPullRequest);
                     commit: `Minified ${files.length} files`,
                   }, ],
                 }).then(function (result) {
-                    const tableData = {
-                      'Pull request url': result.data.url,
-                      'Pull request title': result.data.title,
-                      'Sent by': result.data.user.login,
-                      'Total number of commits': result.data.commits,
-                      'Additions': result.data.additions,
-                      'Deletions': result.data.deletions,
-                      'Number of files changed': result.data.changed_files
-                    }
-                    console.table(tableData);
-                }).catch(function (error) {
-                  throw new Error(error);
+                  const tableData = {
+                    'Pull request url': result.data.url,
+                    'Pull request title': result.data.title,
+                    'Sent by': result.data.user.login,
+                    'Total number of commits': result.data.commits,
+                    'Additions': result.data.additions,
+                    'Deletions': result.data.deletions,
+                    'Number of files changed': result.data.changed_files
+                  }
+                  console.table(tableData);
+                }).catch(function () {
+                  process.on('unhandledRejection', () => {});
                 });
               }
             }
@@ -153,4 +159,3 @@ const readAndMinify = async function (file) {
     console.log("Other files");
   }
 };
-
