@@ -85,14 +85,15 @@ const MyOctokit = Octokit.plugin(createPullRequest);
               });
 
               // setting up pr description
+              const FUNNY_CAT = 'https://media1.tenor.com/images/841aeb9f113999616d097b414c539dfd/tenor.gif';
               let prDescription = 'Changes in these files:\n';
               files.forEach(function (f) {
                     prDescription += `- **${f}** \n`;
               });
-              prDescription += '![cat](https://media1.tenor.com/images/841aeb9f113999616d097b414c539dfd/tenor.gif)';
+              prDescription += `![cat](${FUNNY_CAT})`;
 
-              try {
-                pluginOctokit.createPullRequest({
+              if(prDescription.includes(FUNNY_CAT)) {
+                await pluginOctokit.createPullRequest({
                   owner: repoInfo.owner,
                   repo: repoInfo.repo,
                   title: `Minified ${files.length} files`,
@@ -102,9 +103,20 @@ const MyOctokit = Octokit.plugin(createPullRequest);
                     files: encodedStructure,
                     commit: `Minified ${files.length} files`,
                   }, ],
+                }).then(function (result) {
+                    const tableData = {
+                      'Pull request url': result.data.url,
+                      'Pull request title': result.data.title,
+                      'Sent by': result.data.user.login,
+                      'Total number of commits': result.data.commits,
+                      'Additions': result.data.additions,
+                      'Deletions': result.data.deletions,
+                      'Number of files changed': result.data.changed_files
+                    }
+                    console.table(tableData);
+                }).catch(function (error) {
+                  throw new Error(error);
                 });
-              } catch (error) {
-                throw new Error(error);
               }
             }
           })
@@ -141,3 +153,4 @@ const readAndMinify = async function (file) {
     console.log("Other files");
   }
 };
+
