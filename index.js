@@ -76,7 +76,7 @@ const MyOctokit = Octokit.plugin(createPullRequest);
               content: result[0],
             });
           })
-          .finally(function () {
+          .finally(async function () {
             let encodedStructure = {};
 
             if (final.length == files.length && !currentBranch.startsWith('_minisauras_') && files.length !== 0) {
