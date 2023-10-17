@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 module.exports =
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
