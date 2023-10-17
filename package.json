@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TeamTigers/minisauras.git"
+    "url": "git+https://github.com/dudustefanello/minisauras.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TeamTigers/minisauras/issues"
+    "url": "https://github.com/dudustefanello/minisauras/issues"
   },
-  "homepage": "https://github.com/TeamTigers/minisauras#readme",
+  "homepage": "https://github.com/dudustefanello/minisauras#readme",
   "dependencies": {
     "@actions/core": "^1.2.5",
     "@actions/github": "^4.0.0",
@@ -24,8 +24,9 @@
     "@octokit/rest": "^18.0.4",
     "csso": "^4.0.3",
     "glob": "^7.1.6",
+    "node-fetch": "^3.3.2",
     "octokit-plugin-create-pull-request": "^3.9.0",
     "terser": "^5.3.0",
-    "node-fetch": "^3.3.2"
+    "yarn": "^1.22.19"
   }
 }

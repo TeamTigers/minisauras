@@ -4,6 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const glob = require("glob");
 const csso = require("csso");
+const fetch = require("node-fetch");
 const {
     minify
 } = require("terser");
