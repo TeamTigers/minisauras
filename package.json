@@ -25,6 +25,7 @@
     "csso": "^4.0.3",
     "glob": "^7.1.6",
     "octokit-plugin-create-pull-request": "^3.9.0",
-    "terser": "^5.3.0"
+    "terser": "^5.3.0",
+    "node-fetch": "^3.3.2"
   }
 }
